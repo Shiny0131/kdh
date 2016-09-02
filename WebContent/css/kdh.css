@@ -1,0 +1,94 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+body{
+	font-family: 'Open Sans', sans-serif;
+}
+.button{
+	font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* LAYOUT CSS */
+.header {
+	width: 100%;
+	height: 10%;
+	position:fixed;
+}
+
+.topmenu-main {
+	float: right;
+	margin-top: 90px;
+	margin-right: 50px;
+	font-size: 12px;
+}
+.topmenu-main a {
+	color: #ffffff;
+}
+.topmenu-main a:hover {
+	color: #b30000;
+}
+
+.topmenu-project,
+.topmenu-login {
+	float: right;
+	margin-top: 90px;
+	margin-right: 50px;
+	font-size: 12px;
+}
+
+.topmenu-project a,
+.topmenu-login a {
+	color: #000000;
+}
+.topmenu-project a:hover,
+.topmenu-login a:hover {
+	color: #b30000;
+}
+
+.main {
+	width: 100%;
+	height: 80%;
+}
+
+.about-img{
+	
+}
+
+.project-img{	
+	margin-top: 150px;
+	width: 70%;
+	float: left;
+}
+
+.project-menu{
+	margin-top: 150px;
+	width: 30%;
+	height: 1000px;
+	float: right;
+	font-size: 14px;
+}
+
+.project-menu a{
+	color: #000000;
+}
+.project-menu a:hover {
+	color: #b30000;
+}
+
+.login{
+	padding:400px 15px 250px 15px;
+	text-align: center;
+}
+
+.footer {
+	width: 100%;
+	text-align: center;
+}
+
+.footer a {
+	color: #000000;
+}

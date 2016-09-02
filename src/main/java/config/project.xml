@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+				  "mybatis-3-mapper.dtd">
+				 
+<mapper namespace="project">
+
+	<resultMap type="model.domain.Project" id="projectMap">
+		<result property="proCode" column="pro_code"/>
+		<result property="proName" column="pro_name"/>
+		<result property="proNumber" column="pro_number"/>
+		<result property="sDate" column="s_date"/>
+		<result property="dDate" column="due_date"/>
+	</resultMap>
+
+	<insert id="insert" parameterType="project">
+		insert into project values (#{proCode},#{proName},#{proNumber},#{sDate},#{dDate},#{description})
+	</insert>
+	
+	<select id="listAll" resultMap="projectMap">
+		select * from project
+	</select>
+	
+	<select id="detail" parameterType="int" resultMap="projectMap">
+		select * from project where pro_code = #{proCode}
+	</select>
+	
+	<update id="update" parameterType="project">
+		update project set pro_name =  #{proName}, pro_number = #{proNumber}, s_date = #{sDate}, due_date = #{dDate}, description = #{description} where pro_code = #{proCode}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from project where pro_code = #{proCode}
+	</delete>
+
+</mapper>

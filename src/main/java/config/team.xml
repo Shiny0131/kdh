@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+				  "mybatis-3-mapper.dtd">
+			
+<mapper namespace="team">
+
+	<select id="login" parameterType="team" resultType="team">
+		select * from team where id = #{id} and pw = #{pw} and confirm = 1
+	</select>
+
+	<insert id="insert" parameterType="team">
+		insert into team values (#{id},#{pw},#{name},#{addr},#{proCode},0)
+	</insert>
+	
+	<update id="update" parameterType="team" >
+		update team set name = #{name}, addr = #{addr}, proCode = #{proCode} where id = #{id}
+	</update>
+	
+	<select id="teamInfo" parameterType="team" resultType="team">
+		select * from team where id = #{id}
+	</select>
+	
+	<delete id="delete" parameterType="int" >
+		delete from team where id = #{id} 
+	</delete>
+	
+	<select id="teamList" resultType="team">
+		select * from team
+	</select>
+	
+	<update id="confirm" parameterType="string" >
+		update team set confirm = 1 where id = #{id}
+	</update>
+	
+	<select id="loginCheck" parameterType="team" resultType="team">
+		select * from team where id = #{id}
+	</select>
+	
+</mapper>

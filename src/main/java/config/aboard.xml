@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+			
+<mapper namespace="aBoard">
+
+	<resultMap type="model.domain.Aboard" id="aBoardMap">
+		<result property="aNo" column="a_no"/>
+		<result property="aUserId" column="a_user_id"/>
+		<result property="aTitle" column="a_title"/>
+		<result property="aBody" column="a_body"/>
+		<result property="aDate" column="a_date"/>
+		<result property="aSecret" column="a_secret"/>
+		<result property="aCount" column="a_count"/>
+	</resultMap>
+
+	<!-- A게시판 전체조회 -->
+	<select id="aList" resultMap="aBoardMap">
+		select * from A_BOARD order by a_no
+	</select>
+
+	<!-- A게시판 등록 -->
+	<insert id="insertA" parameterType="aBoard">
+		insert into A_BOARD (a_user_id, a_title, a_body, a_date, a_secret)
+		values (#{aUserId},#{aTitle},#{aBody}, SYSDATE(), #{aSecret})
+	</insert>
+	
+	<!-- A게시판 수정 -->	
+	<update id="updateA" parameterType="aBoard" >
+		update A_BOARD set a_title = #{aTitle}, a_body = #{aBody}, a_secret = #{aSecret}, a_date = SYSDATE() where a_no = #{aNo}
+	</update>
+	
+	<!-- A게시판 삭제 -->
+	<delete id="deleteA" parameterType="int">
+		delete from A_BOARD where a_no = #{aNo}
+	</delete>
+	
+	<!-- A게시판 상세조회 -->	
+	<select id="aDetail" parameterType="aBoard" resultMap="aBoardMap">
+		select * from A_BOARD where a_no = #{aNo}
+	</select>
+	
+	<!-- A게시판 미리보기 -->
+	<select id="preABoard" parameterType="aBoard" resultMap="aBoardMap">
+		SELECT A_NO, A_TITLE, CONCAT(SUBSTR(A_BODY, 1, 20), '.....') AS A_BODY, A_DATE, A_SECRET FROM A_BOARD WHERE A_NO = #{aNo}
+	</select>
+	
+	<!-- A게시판 조회수 증가 -->
+	<update id="updateACount" parameterType="aBoard">
+		update A_BOARD set a_count = a_count+1 where a_no = #{aNo}
+	</update>
+	
+	<!-- A게시판 새 글 등록시 글 번호 가져오기 -->
+	<select id="aNoGet" resultType="int">
+		select a_no+1 from A_BOARD
+	</select>
+	
+	<!-- 메인화면에 보여질 게시글 번호 가져오기 -->
+	<select id="getMax" resultType="int">
+		SELECT MAX(A_NO) AS A_NO FROM A_BOARD WHERE A_SECRET = 'N'
+	</select>
+</mapper>

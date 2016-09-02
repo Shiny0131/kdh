@@ -20,7 +20,8 @@
 				<span id="collection"><a href="#">COLLECTION</a></span>
 				<!-- <span id="shop"><a href="#">SHOP</a></span> -->
 				<!-- <span id="cart"><a href="#">CART</a></span> -->
-				<span id="login"><a href="goLogin.do">LOGIN</a></span>
+				<!-- <span id="login"><a href="goLogin.do">LOGIN</a></span> -->
+				<span id="login"><a href="login.jsp">LOGIN</a></span>
 			</div>
 		</div>
 		<div class="main">

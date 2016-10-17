@@ -46,7 +46,7 @@
 	<insert id="insertMember" parameterType="member">
 		INSERT INTO MEMBER
 		VALUES (#{id},
-			    'NON',
+			    2,
 			    #{password},
 			    #{name},
 			    MAX(MEMBER_NO) + 1,

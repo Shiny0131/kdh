@@ -2,7 +2,7 @@ package model.domain;
 
 public class Member {
 
-	private String id;
+	private String userId;
 	private String auth;
 	private String password;
 	private String name;
@@ -12,10 +12,16 @@ public class Member {
 	public Member() {
 		super();
 	}
-
-	public Member(String id, String auth, String password, String name, int memberNo, String joinDate) {
+	
+	public Member(String userId, String password) {
 		super();
-		this.id = id;
+		this.userId = userId;
+		this.password = password;
+	}
+
+	public Member(String userId, String auth, String password, String name, int memberNo, String joinDate) {
+		super();
+		this.userId = userId;
 		this.auth = auth;
 		this.password = password;
 		this.name = name;
@@ -23,12 +29,12 @@ public class Member {
 		this.joinDate = joinDate;
 	}
 
-	public String getId() {
-		return id;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setUserId(String userIid) {
+		this.userId = userIid;
 	}
 
 	public String getAuth() {
@@ -74,8 +80,8 @@ public class Member {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Member [id=");
-		builder.append(id);
+		builder.append("Member [userId=");
+		builder.append(userId);
 		builder.append(", auth=");
 		builder.append(auth);
 		builder.append(", password=");

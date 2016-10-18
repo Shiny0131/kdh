@@ -5,7 +5,7 @@
 <mapper namespace="member">
 
 	<resultMap type="model.domain.Member" id="memberMap">
-		<result property="id" column="user_id"/>
+		<result property="userId" column="user_id"/>
 		<result property="auth" column="auth"/>
 		<result property="password" column="password"/>
 		<result property="name" column="name"/>
@@ -21,7 +21,7 @@
 			   NAME,
 			   JOIN_DATE
 		  FROM MEMBER
-		 WHERE USER_ID = #{id}
+		 WHERE USER_ID = #{userId}
 		   AND PASSWORD = #{password} <!-- 보안 -->
 	</select>
 	
@@ -45,7 +45,7 @@
 	<!-- join member -->	
 	<insert id="insertMember" parameterType="member">
 		INSERT INTO MEMBER
-		VALUES (#{id},
+		VALUES (#{userId},
 			    2,
 			    #{password},
 			    #{name},
@@ -57,13 +57,13 @@
 	<update id="updatePassword" parameterType="member" >
 		UPDATE MEMBER
 		   SET PASSWORD = #{password}
-		 WHERE USER_ID = #{id}
+		 WHERE USER_ID = #{userId}
 	</update>
 	
 	<!-- delete member -->
 	<delete id="deleteMember" parameterType="int" >
 		DELETE FROM MEMBER 
-		 WHERE USER_ID = #{id}
+		 WHERE USER_ID = #{userId}
 		   AND PASSWORD = #{password} 
 	</delete>
 	

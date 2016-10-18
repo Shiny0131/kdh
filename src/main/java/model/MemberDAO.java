@@ -37,11 +37,12 @@ public class MemberDAO {
 	 */
 	public static Member login(Member member)throws SQLException{
 		SqlSession session = DAOFactory.getSqlSession(false);
-		Member loginUser = null;		
-		
+		Member loginUser = null;
 		try{
+			//System.out.println(member);
 			loginUser = (Member)session.selectOne("member.login", member);
-			
+			System.out.println("안녕????????");
+			System.out.println(loginUser);
 		}finally{
 			session.close();
 		}

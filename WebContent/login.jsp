@@ -9,6 +9,19 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/kdh.js"></script>
 		<link rel="stylesheet" href="css/kdh.css" />
+		<script type="text/javascript">
+			function login() {
+				if(document.getElementById("userId").value == "") {
+					alert("ID를 입력하세요.");
+					document.getElementById("userId").focus();
+				} else if(document.getElementById("password").value == "") {
+					alert("비밀번호를 입력하세요.");
+					document.getElementById("password").focus();
+				} else if(document.getElementById("userId").value != "" && document.getElementById("password").value != "") {
+					document.getElementById("loginForm").submit();
+				}
+			}
+		</script>
 	</head>
 	<body>
 		<div class="header" >
@@ -25,9 +38,11 @@
 		</div>
 		<div class="main">
 			<div class="login">
-				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="id" name="id"/></p>
-				<p>PASSWORD<input type="password" id="password" name="password"/></p>
-				<p><input type="button" id="in" name="in" value="LOGIN"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="join" name="join" value="JOIN"/></p>
+				<form action="login.do" method="post" id="loginForm">
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="userId" name="userId"/></p>
+					<p>PASSWORD<input type="password" id="password" name="password"/></p>
+					<p><input type="button" id="loginB" name="loginB" value="LOGIN" onclick="login()"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="joinB" name="joinB" value="JOIN"/></p>
+				</form>
 			</div>
 		</div>
 		<div class="footer">

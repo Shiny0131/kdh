@@ -20,14 +20,12 @@ public class MemberCtrl {
 		ModelAndView mv = new ModelAndView();
 		try {
 			loginUser = MemberDAO.login(new Member(request.getParameter("userId"), request.getParameter("password")));
-			System.out.println(loginUser);
 			HttpSession session = request.getSession();
 			session.setAttribute("loginSession", loginUser);
 			if(loginUser == null) { // 회원이 아닐경우
 				mv.setViewName("fail");
 			} else { // 회원일경우
 				mv.setViewName("index");
-				System.out.println(session);
 			}
 			
 		} catch (Exception e) {

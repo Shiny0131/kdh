@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+			
+<mapper namespace="collection">
+
+	<resultMap type="model.domain.Collection" id="collectionMap">
+		<result property="title" column="title"/>
+		<result property="url" column="url"/>
+		<result property="sort" column="sort"/>
+		<result property="seq" column="seq"/>
+		<result property="createDate" column="create_date"/>
+		<result property="createId" column="create_id"/>
+		<result property="updateDate" column="update_date"/>
+		<result property="updateId" column="update_id"/>
+		<result property="hideYn" column="hide_yn"/>		
+	</resultMap>
+	
+	<select id="collectionListY" resultMap="collectionMap">
+		SELECT TITLE,
+			   URL,
+			   SEQ,
+			   HIDE_YN
+		  FROM COLLECTION
+		 WHERE HIDE_YN IN = 'Y'
+		 ORDER BY SORT
+	</select>
+	
+	<select id="collectionListAll" resultMap="collectionMap">
+		SELECT TITLE,
+			   URL,
+			   SEQ,
+			   HIDE_YN
+		  FROM COLLECTION
+		 ORDER BY SORT
+	</select>
+	<!-- 
+	<insert id="insertProject" parameterType="collection">
+		
+	</insert>
+	
+	<update id="updateProject" parameterType="collection" >
+		
+	</update>
+
+	<delete id="deleteProject" parameterType="int" >
+		 
+	</delete>
+	 -->
+</mapper>

@@ -10,16 +10,6 @@
 		<script src="js/kdh.js"></script>
 		<link rel="stylesheet" href="css/kdh.css" />
 		<link rel="shortcut icon" href="image/DHK/f8910241048545.57972b96986b7.jpg"/>
-		<script type="text/javascript">
-			function logout() {
-				if(confirm("로그아웃 하시겠습니까")){
-					//document.getElementById("userForm").submit();
-					$("#logout").click(function() {
-						//session.invalidate(); 자바에 이거 추가해서 세션 죽이면 로그아웃 서블릿으로 보내기.
-					});
-				}	
-			}
-		</script>
 	</head>
 	<body>
 		<div class="header">
@@ -36,7 +26,8 @@
 						<span id="login"><a href="login.jsp">LOGIN</a></span>
 					</c:when>
 					<c:otherwise>
-						<span id="logout"><a href="">LOGOUT</a></span>
+						<form action="logout.do" id="logoutForm" method="post" style="display: none;"></form>
+						<span id="logout"><a href="#" onclick="document.getElementById('logoutForm').submit();">LOGOUT</a></span>
 					</c:otherwise>
 				</c:choose>
 			</div>

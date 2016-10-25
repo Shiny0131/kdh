@@ -18,11 +18,10 @@
 		SELECT USER_ID,
 			   MEMBER_NO,
 			   AUTH,
-			   NAME,
-			   JOIN_DATE
+			   NAME
 		  FROM MEMBER
 		 WHERE USER_ID = #{userId}
-		   AND PASSWORD = #{password} <!-- 보안 -->
+		   AND PASSWORD = sha(#{password})
 	</select>
 	
 	<!-- get member no -->
@@ -45,18 +44,20 @@
 	<!-- join member -->	
 	<insert id="insertMember" parameterType="member">
 		INSERT INTO MEMBER
+			   (USER_ID,
+			    AUTH,
+			    PASSWORD,
+			    NAME)
 		VALUES (#{userId},
 			    2,
-			    #{password},
-			    #{name},
-			    MAX(MEMBER_NO) + 1,
-			    SYSDATE())
+			    sha(#{password}),
+			    #{name})
 	</insert>
 	
 	<!-- update password -->
 	<update id="updatePassword" parameterType="member" >
 		UPDATE MEMBER
-		   SET PASSWORD = #{password}
+		   SET PASSWORD = sha(#{password})
 		 WHERE USER_ID = #{userId}
 	</update>
 	
@@ -64,7 +65,7 @@
 	<delete id="deleteMember" parameterType="int" >
 		DELETE FROM MEMBER 
 		 WHERE USER_ID = #{userId}
-		   AND PASSWORD = #{password} 
+		   AND PASSWORD = sha(#{password})
 	</delete>
 	
 </mapper>

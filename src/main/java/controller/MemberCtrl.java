@@ -33,4 +33,13 @@ public class MemberCtrl {
 		}
 		return mv;
 	}
+	
+	@RequestMapping(value="logout.do", method=RequestMethod.POST)
+	public ModelAndView logout(HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		ModelAndView mv = new ModelAndView();
+		session.invalidate();
+		mv.setViewName("index");
+		return mv;
+	}
 }

@@ -16,7 +16,7 @@ public class DAOFactory {
 		try {
 			inputStream = Resources.getResourceAsStream("config/SqlMapConfig.xml");
 			SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-			factory = builder.build(inputStream);			
+			factory = builder.build(inputStream);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

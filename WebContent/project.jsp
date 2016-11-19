@@ -9,32 +9,46 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/kdh.js"></script>
 		<link rel="stylesheet" href="css/kdh.css" />
+		<script type="text/javascript">
+			function goDetailMenu(menuId) {
+				document.getElementById("menuId").value = menuId;
+				document.getElementById("menuForm").submit();
+			}
+		</script>
 	</head>
 	<body>
 		<div class="header">
 			<a href="index.jsp"><img alt="main" src="image/DHK/DHK.png" draggable="false" style="width: 300px; height: 150px;"></a>
 			<div class="topmenu-project">
 				<span id="about"><a href="about.jsp">ABOUT</a></span>
-				<span id="project"><a href="project.jsp">PROJECT</a></span>
+				<span id="project"><a href="getMenu.do">PROJECT</a></span>
 				<span id="collection"><a href="#">COLLECTION</a></span>
 				<!-- <span id="shop"><a href="#">SHOP</a></span> -->
 				<!-- <span id="cart"><a href="#">CART</a></span> -->
-				<!-- <span id="login"><a href="goLogin.do">LOGIN</a></span> -->
-				<span id="login"><a href="login.jsp">LOGIN</a></span>
+				<c:choose>
+					<c:when test="${null eq loginSession }" >
+						<span id="login"><a href="login.jsp">LOGIN</a></span>
+					</c:when>
+					<c:otherwise>
+						<form action="logout.do" id="logoutForm" method="get" style="display: none;"></form>
+						<span id="logout"><a href="#" onclick="document.getElementById('logoutForm').submit();">LOGOUT</a></span>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		<div class="main">
-			<div class="project-img" align="center">
-				<img src="image/DHK/83642141048545.57972b969919d.jpg" style="max-width: 80%; max-height: 80%;"/>
-			</div>
-			<div class="project-menu">
-				<!-- c:forEach태그로 db에서 불러오게 수정 -->
-				<ul><a href="#">DHK</a></ul>
-				<ul><a href="#">DIOR</a></ul>
-				<ul><a href="#">GIVENCHY</a></ul>
-				<ul><a href="#">LumpeN</a></ul>
-				<ul><a href="#">MARGIELA</a></ul>
-				<ul><a href="#">SEOUL</a></ul>
+			<div id="n">
+				<div class="project-img" align="center">
+					<img src="image/DHK/83642141048545.57972b969919d.jpg" style="max-width: 80%; max-height: 80%;"/>
+				</div>
+				<div class="project-menu"  style="max-width: 80%; max-height: 80%;">
+					<form action="getDetailProject.do" id="menuForm" method="post">
+						<input type="hidden" id="menuId" name="menuId" value=""/>
+						<c:forEach items="${requestScope.menuList}"  var="result">
+							<ul onclick="goDetailMenu('${result.menuId}')"><c:out value="${result.menuName }"/></ul>
+						</c:forEach>
+					</form>
+				</div>
 			</div>
 		</div>
 		<div class="footer">

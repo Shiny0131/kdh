@@ -15,14 +15,13 @@
 		<result property="hideYn" column="hide_yn"/>			
 	</resultMap>
 	
-	<select id="projectMenuY" resultMap="projectMenuMap">
+	<select id="projectMenuN" resultMap="projectMenuMap">
 		SELECT MENU_ID,
 			   MENU_NAME,
 			   SORT,
-			   HIDE_YN,
-			   JOIN_DATE
+			   HIDE_YN
 		  FROM PROJECT_MENU
-		 WHERE HIDE_YN IN = 'N'
+		 WHERE HIDE_YN = 'N'
 		 ORDER BY SORT
 	</select>
 	
@@ -30,8 +29,7 @@
 		SELECT MENU_ID,
 			   MENU_NAME,
 			   SORT,
-			   HIDE_YN,
-			   JOIN_DATE
+			   HIDE_YN
 		  FROM PROJECT_MENU
 		 ORDER BY SORT
 	</select>

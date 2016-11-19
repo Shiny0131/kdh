@@ -16,7 +16,7 @@
 			<a href="index.jsp"><img alt="main" src="image/DHK/DHK.png" draggable="false" style="width: 300px; height: 150px;"></a>
 			<div class="topmenu-main">
 				<span id="about"><a href="about.jsp">ABOUT</a></span>
-				<span id="project"><a href="project.jsp">PROJECT</a></span>
+				<span id="project"><a href="getMenu.do">PROJECT</a></span>
 				<span id="collection"><a href="#">COLLECTION</a></span>
 				<!-- <span id="shop"><a href="#">SHOP</a></span> -->
 				<!-- <span id="cart"><a href="#">CART</a></span> -->

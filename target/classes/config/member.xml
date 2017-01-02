@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+			
+<mapper namespace="member">
+
+	<resultMap type="model.domain.Member" id="memberMap">
+		<result property="userId" column="user_id"/>
+		<result property="auth" column="auth"/>
+		<result property="password" column="password"/>
+		<result property="name" column="name"/>
+		<result property="memberNo" column="member_no"/>
+		<result property="joinDate" column="join_date"/>
+	</resultMap>
+
+	<!-- login -->
+	<select id="login" parameterType="member" resultMap="memberMap">
+		SELECT USER_ID,
+			   MEMBER_NO,
+			   AUTH,
+			   NAME
+		  FROM MEMBER
+		 WHERE USER_ID = #{userId}
+		   AND PASSWORD = sha(#{password})
+	</select>
+	
+	<!-- get member no -->
+	<select id="getMemberNo" parameterType="member" resultMap="memberMap">
+		SELECT MEMBER_NO
+		  FROM MEMBER
+		 WHERE USER_ID = #{id}
+	</select>
+	
+	<!-- get member list -->
+	<select id="memberList" resultMap="memberMap">
+		SELECT USER_ID,
+			   MEMBER_NO,
+			   AUTH,
+			   NAME,
+			   JOIN_DATE
+		  FROM MEMBER
+	</select>
+	
+	<!-- join member -->	
+	<insert id="insertMember" parameterType="member">
+		INSERT INTO MEMBER
+			   (USER_ID,
+			    AUTH,
+			    PASSWORD,
+			    NAME)
+		VALUES (#{userId},
+			    2,
+			    sha(#{password}),
+			    #{name})
+	</insert>
+	
+	<!-- update password -->
+	<update id="updatePassword" parameterType="member" >
+		UPDATE MEMBER
+		   SET PASSWORD = sha(#{password})
+		 WHERE USER_ID = #{userId}
+	</update>
+	
+	<!-- delete member -->
+	<delete id="deleteMember" parameterType="int" >
+		DELETE FROM MEMBER 
+		 WHERE USER_ID = #{userId}
+		   AND PASSWORD = sha(#{password})
+	</delete>
+	
+</mapper>

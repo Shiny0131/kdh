@@ -4,11 +4,12 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes" />
 		<title>=DHK=</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/kdh.js"></script>
 		<link rel="stylesheet" href="css/kdh.css" />
+		<link rel="stylesheet" href="dist/css/swiper.min.css">
 		<link rel="shortcut icon" href="image/DHK/f8910241048545.57972b96986b7.jpg"/>
 	</head>
 	<body>

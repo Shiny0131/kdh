@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd">
+
+<configuration>
+	
+	<typeAliases>
+		<typeAlias type="model.domain.Member" alias="member"/>
+		<typeAlias type="model.domain.MemberInfo" alias="memberInfo"/>
+		<typeAlias type="model.domain.Project" alias="project"/>
+		<typeAlias type="model.domain.ProjectMenu" alias="projectMenu"/>
+	</typeAliases>
+
+	<environments default="env">			
+
+		<environment id="env">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://ec2-52-78-195-244.ap-northeast-2.compute.amazonaws.com:3306/kdh?characterEncoding=UTF-8"/>
+				<property name="username" value="kdh" />
+				<property name="password" value="ksy1469" />
+			</dataSource>
+		</environment>
+
+	</environments>
+
+	<mappers>
+		<mapper resource="config/member.xml" />
+		<mapper resource="config/memberInfo.xml" />
+		<mapper resource="config/project.xml"/>
+		<mapper resource="config/projectMenu.xml" />
+	</mappers>
+
+</configuration>

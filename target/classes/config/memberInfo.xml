@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+			
+<mapper namespace="memberInfo">
+
+	<resultMap type="model.domain.MemberInfo" id="memberInfoMap">
+		<result property="memberNo" column="member_no"/>
+		<result property="phone1" column="phone1"/>
+		<result property="phone2" column="phone2"/>
+		<result property="address1" column="address1"/>
+		<result property="address2" column="address2"/>
+		<result property="postNo" column="post_no"/>
+	</resultMap>
+	
+	<!-- get member information -->
+	<select id="getMemberInfo" parameterType="memberInfo" resultMap="memberInfoMap">
+		SELECT MEMBER_NO,
+			   PHONE1,
+			   PHONE2,
+			   ADDRESS1,
+			   ADDRESS2,
+			   POST_NO
+		  FROM MEMBER_INFO
+		 WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- insert member information -->	
+	<insert id="insertMemberInfo" parameterType="memberInfo">
+		INSERT INTO MEMBER_INFO
+		VALUES (MAX(MEMBER_NO) + 1,
+			    #{phone1},
+			    #{phone2},
+			    #{address1},
+			    #{address2},
+			    #{postNo})
+	</insert>
+	
+	<!-- update member information -->
+	<update id="updateMemberInfo" parameterType="memberInfo" >
+		UPDATE MEMBER_INFO
+		   SET PHONE1 = #{phone1},
+		   	   PHONE2 = #{phone2},
+		   	   ADDRESS1 = #{address1},
+		   	   ADDRESS2 = #{address2},
+		   	   POST_NO = #{postNo}
+		 WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	<!-- delete member -->
+	<delete id="deleteMemberInfo" parameterType="int" >
+		DELETE FROM MEMBER_INFO 
+		 WHERE MEMBER_NO = #{memberNo}
+	</delete>
+	
+</mapper>

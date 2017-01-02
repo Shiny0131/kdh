@@ -2,41 +2,42 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
 			
-<mapper namespace="project">
+<mapper namespace="projectMenu">
 
-	<resultMap type="model.domain.Project" id="projectMap">
+	<resultMap type="model.domain.ProjectMenu" id="projectMenuMap">
 		<result property="menuId" column="menu_id"/>
-		<result property="seq" column="seq"/>
-		<result property="url" column="url"/>
+		<result property="menuName" column="menu_name"/>
 		<result property="sort" column="sort"/>
 		<result property="createDate" column="create_date"/>
 		<result property="createId" column="create_id"/>
 		<result property="updateDate" column="update_date"/>
 		<result property="updateId" column="update_id"/>
-		<result property="hideYn" column="hide_yn"/>		
+		<result property="hideYn" column="hide_yn"/>			
 	</resultMap>
 	
-	<select id="projectListN" resultMap="projectMap">
+	<select id="projectMenuN" resultMap="projectMenuMap">
 		SELECT MENU_ID,
-			   URL,
-			   SORT
-		  FROM PROJECT
-		 WHERE MENU_ID = #{menuId}
-		   AND HIDE_YN = 'N'
+			   MENU_NAME,
+			   SORT,
+			   HIDE_YN
+		  FROM PROJECT_MENU
+		 WHERE HIDE_YN = 'N'
+		 ORDER BY SORT
 	</select>
 	
-	<select id="projectListAll" resultMap="projectMap">
+	<select id="projectMenuAll" resultMap="projectMenuMap">
 		SELECT MENU_ID,
-			   URL,
-			   SORT
-		  FROM PROJECT
-		 WHERE MENU_ID = #{menuId}
+			   MENU_NAME,
+			   SORT,
+			   HIDE_YN
+		  FROM PROJECT_MENU
+		 ORDER BY SORT
 	</select>
 
-	<insert id="insertProject" parameterType="project">
-		INSERT INTO PROJECT
+	<insert id="insertProject" parameterType="projectMenu">
+		INSERT INTO PROJECT_MENU
 		(MENU_ID,
-		 URL,
+		 MENU_NAME,
 		 SORT,
 		 CREATE_ID,
 		 UPDATE_DATE,
@@ -44,11 +45,11 @@
 		 HIDE_YN)
 		VALUES
 		(#{menuId},
-		 #{url},
+		 #{menuName},
 		 #{sort},
-		 #{createId},
+		 #{userId},
 		 (SELECT NOW()),
-		 #{createId},
+		 #{userId},
 		 #{hideYn})
 	</insert>
 	<!-- 

@@ -4,7 +4,6 @@ public class Project {
 	
 	private String menuId;
 	private int seq;
-	private String title;
 	private String url;
 	private int sort;
 	private String createDate;
@@ -17,11 +16,10 @@ public class Project {
 		super();
 	}
 
-	public Project(String menuId, int seq, String title, String url, int sort, String createDate, String createId, String updateDate, String updateId, String hideYn) {
+	public Project(String menuId, int seq, String url, int sort, String createDate, String createId, String updateDate, String updateId, String hideYn) {
 		super();
 		this.menuId = menuId;
 		this.seq = seq;
-		this.title = title;
 		this.url = url;
 		this.sort = sort;
 		this.createDate = createDate;
@@ -45,14 +43,6 @@ public class Project {
 
 	public void setSeq(int seq) {
 		this.seq = seq;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public String getUrl() {
@@ -118,8 +108,6 @@ public class Project {
 		builder.append(menuId);
 		builder.append(", seq=");
 		builder.append(seq);
-		builder.append(", title=");
-		builder.append(title);
 		builder.append(", url=");
 		builder.append(url);
 		builder.append(", sort=");
